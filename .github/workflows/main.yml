@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       kernel_name:
-        description: 'Kernel Name (e.g., Zixine-Elysium)'
+        description: 'Kernel Name (e.g., Payel-Kernul)'
         required: true
         default: 'Zixine-Elysium'
 
@@ -72,6 +72,8 @@ jobs:
           sed -i '1i #include <linux/susfs.h>' drivers/kernelsu/supercalls.c
           # Kita nonaktifkan baris yang bermasalah agar compiler mengabaikannya dan build tetap lanjut
           sed -i 's/susfs_set_i_state_on_external_dir/\/\/susfs_set_i_state_on_external_dir/g' drivers/kernelsu/supercalls.c
+
+          sed -i '1i #include <linux/cred.h>' include/linux/susfs_def.h
 
           echo "🔧 2. Fixing Stack Protector (Wajib untuk Xiaomi Anti-Bootloop)..."
           sed -i '/config STACKPROTECTOR_PER_TASK/{n;s/def_bool y/bool "Stack Protector per task"\n\tdefault y/;}' arch/arm64/Kconfig
