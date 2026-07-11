@@ -95,6 +95,7 @@ jobs:
           
           cat >> $TARGET_CONFIG <<EOF
           CONFIG_KSU=y
+          CONFIG_KSU_VERSION=10203
           CONFIG_KPM=y
           CONFIG_KSU_MANUAL_HOOK=y
           CONFIG_KSU_KPROBES_HOOK=n
