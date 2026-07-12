@@ -6,7 +6,7 @@ on:
       kernel_name:
         description: 'Kernel Name (e.g., Payel-Kernul)'
         required: true
-        default: 'Zixine-Elysium'
+        default: 'Payel-Kernel'
 
 jobs:
   build-kernel:
@@ -48,9 +48,9 @@ jobs:
       - name: Update KernelSU & Rama Source
         working-directory: gki/common
         run: |
-          git remote add rama https://github.com/ramabondanp/android_kernel_common-5.10.git
+          git remote add rama https://github.com/Contolodon/android_kernel_common-5.10.git
           git fetch -j12 rama
-          git checkout -b update-android12-5.10-staging rama/android12-5.10-staging
+          git checkout -b update-android12-5.10-staging rama/android12-5.10
           
           # echo "🛡️ Removing old KernelSU..."
           # rm -rf drivers/staging/kernelsu
@@ -136,7 +136,7 @@ jobs:
         working-directory: gki/common
         run: |
           NAME="${{ github.event.inputs.kernel_name }}"
-          [ -z "$NAME" ] && NAME="Zixine-Elysium-inline-2.64"
+          [ -z "$NAME" ] && NAME="Payel-Kernel-2.6"
           FINAL_TAG="-${NAME}"
           echo "" > scripts/setlocalversion
           if grep -q '^EXTRAVERSION *=' Makefile; then
@@ -192,7 +192,7 @@ jobs:
           BASE_VER=$(make -s kernelversion -C gki/common | tr -d '\n\r')
           
           BASE_NAME="${{ github.event.inputs.kernel_name }}"
-          [ -z "$BASE_NAME" ] && BASE_NAME="Zixine"
+          [ -z "$BASE_NAME" ] && BASE_NAME="Payel"
           
           TIMESTAMP=$(date +"%Y%m%d")
           REL_TAG="v${TIMESTAMP}"
