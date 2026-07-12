@@ -52,12 +52,12 @@ jobs:
           git fetch -j12 rama
           git checkout -b update-android12-5.10-staging rama/android12-5.10-staging
           
-         # echo "🛡️ Removing old KernelSU..."
-         # rm -rf drivers/staging/kernelsu
-         # rm -rf drivers/kernelsu
+          # echo "🛡️ Removing old KernelSU..."
+          # rm -rf drivers/staging/kernelsu
+          # rm -rf drivers/kernelsu
           
-         # echo "➡️ add Wild_KSU"
-           # curl -LSs "https://raw.githubusercontent.com/zixine/KernelSU/refs/heads/master/kernel/setup.sh" | bash -s susfs-mambo-master
+          # echo "➡️ add Wild_KSU"
+          # curl -LSs "https://raw.githubusercontent.com/zixine/KernelSU/refs/heads/master/kernel/setup.sh" | bash -s susfs-mambo-master
             git clone https://gitlab.com/simonpunk/susfs4ksu/ -b gki-android12-5.10 sus
             rm -rf sus/.git
             susfs=sus/kernel_patches
