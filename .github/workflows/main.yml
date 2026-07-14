@@ -48,8 +48,8 @@ jobs:
       - name: Update KernelSU & Rama Source
         working-directory: gki/common
         run: |
-          git remote add rama https://github.com/Contolodon/android_kernel_common-5.10.git
-          git fetch -j12 rama
+          git remote add garnet-playground https://github.com/garnet-playground/android_kernel_xiaomi_sm7435.git
+          git fetch -j12 garnet-playground
           git checkout -b update-android12-5.10-staging rama/android12-5.10
           
           # echo "🛡️ Removing old KernelSU..."
