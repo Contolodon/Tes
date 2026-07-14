@@ -85,7 +85,7 @@ jobs:
           
           echo "🧹 4. Cleaning Build Config..."
           sed -i 's/check_defconfig//' build.config.gki
-          sed -i 's/GKI_MODULES_LIST=/#GKI_MODULES_LIST=/g' build.config.gki.aarch64
+          sed -i 's/GKI_MODULES_LIST=/#GKI_MODULES_LIST=/g' build.config*
 
           echo "🔧 5. Fixing Unused Label in bootconfig.c..."
           sed -i 's/skip:;/\/\/ skip:;/g' fs/proc/bootconfig.c
