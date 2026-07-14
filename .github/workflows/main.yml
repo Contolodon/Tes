@@ -50,7 +50,6 @@ jobs:
         run: |
           git remote add garnet-playground https://github.com/garnet-playground/android_kernel_xiaomi_sm7435.git
           git fetch -j12 garnet-playground
-          git checkout -b update-android12-5.10-staging rama/android12-5.10
           
           # echo "🛡️ Removing old KernelSU..."
           # rm -rf drivers/staging/kernelsu
