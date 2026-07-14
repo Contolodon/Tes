@@ -1,4 +1,4 @@
-name: Build Kernel 12-5.10 (Zixine + SuSFS)
+name: Build Kernel 12-5.10 (Payel + SuSFS)
 
 on:
   workflow_dispatch:
