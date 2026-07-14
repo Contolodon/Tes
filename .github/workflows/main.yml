@@ -86,6 +86,9 @@ jobs:
           echo "🧹 4. Cleaning Build Config..."
           sed -i 's/check_defconfig//' build.config.gki
 
+          echo "🔧 5. Fixing Unused Label in bootconfig.c..."
+          sed -i 's/skip:;/\/\/ skip:;/g' fs/proc/bootconfig.c
+
       - name: Configure Kernel (Safe Mode)
         working-directory: gki/common
         run: |
@@ -173,6 +176,8 @@ jobs:
           export KMI_SYMBOL_LIST_STRICT_MODE=0
           export KMI_ENFORCED=0
           export TRIM_NONLISTED_KMI=0
+
+          LTO=thin KCFLAGS="-Wno-error" BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
           
           LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
 
