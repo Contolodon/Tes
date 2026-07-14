@@ -49,7 +49,8 @@ jobs:
         working-directory: gki/common
         run: |
           git remote add garnet-playground https://github.com/garnet-playground/android_kernel_xiaomi_sm7435.git
-          git fetch -j12 garnet-playground
+          git fetch --depth=1 garnet-playground
+          git reset --hard garnet-playground/lineage-23
           
           # echo "🛡️ Removing old KernelSU..."
           # rm -rf drivers/staging/kernelsu
