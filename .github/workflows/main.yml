@@ -40,14 +40,16 @@ jobs:
 
       - name: Setup Swap Space (Anti-OOM)
         run: |
-          echo "💾 Creating 8GB swap to prevent OOM during LTO/link..."
-          sudo fallocate -l 8G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
+          echo "💾 Setting up swap to prevent OOM during build..."
+          sudo swapoff -a 2>/dev/null || true
+          sudo rm -f /swapfile /swapfile1 /swapfile2 2>/dev/null || true
+          sudo dd if=/dev/zero of=/swapfile1 bs=1M count=8192 status=progress
+          sudo chmod 600 /swapfile1
+          sudo mkswap /swapfile1
+          sudo swapon /swapfile1
           echo "✅ Swap enabled:"
           free -h
-
+          
       - name: Sync GKI Manifest
         run: |
           mkdir -p gki
